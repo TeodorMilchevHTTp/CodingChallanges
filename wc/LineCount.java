@@ -7,7 +7,7 @@ public class LineCount {
     public static void main(String[] args) throws FileNotFoundException, IOException {
 
         if (args.length != 1) {
-            System.err.println("Usage: java WordCount <filename>");
+            System.err.println("Usage: java LineCount <filename>");
             System.exit(1);
         }
         String filename = args[0];
