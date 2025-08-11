@@ -6,7 +6,7 @@ import java.io.IOException;
 public class WordCount {
     public static void main(String[] args) throws FileNotFoundException, IOException {
         if (args.length != 1) {
-            System.err.println("Usage: ...");
+            System.err.println("Usage: java WordCount <filename>");
             System.exit(1);
         }
 
