@@ -5,7 +5,7 @@ public class ByteCount {
 
     public static void main(String[] args) {
         if (args.length != 1) {
-            System.err.println("Usage: java WordCount <filename>");
+            System.err.println("Usage: java ByteCount <filename>");
             System.exit(1);
         }
         String filename = args[0];
