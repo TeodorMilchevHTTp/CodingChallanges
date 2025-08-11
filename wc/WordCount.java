@@ -1,30 +1,33 @@
-import java.io.FileInputStream;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 
 public class WordCount {
-
-    public static void main(String[] args) {
+    public static void main(String[] args) throws FileNotFoundException, IOException {
         if (args.length != 1) {
-            System.err.println("Usage: java WordCount <filename>");
+            System.err.println("Usage: ...");
             System.exit(1);
         }
+
         String filename = args[0];
-        long byteCount = 0;
+        long wordCount = 0;
 
-        try (FileInputStream fis = new FileInputStream(filename)) {
+        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                line = line.trim();
+                if (!line.isEmpty()) {
 
-            byte[] buffer = new byte[4096];
-            int bytes;
-
-            while ((bytes = fis.read(buffer)) != -1) {
-                byteCount += bytes;
+                    String[] words = line.split("\\s+");
+                    wordCount += words.length;
+                }
             }
-            System.out.println(byteCount);
+            System.out.println(wordCount);
 
         } catch (IOException e) {
-            System.err.println("Error reading file: " + e.getMessage());
+            System.err.println("Error reading file " + e.getMessage());
             System.exit(1);
         }
-
     }
 }
